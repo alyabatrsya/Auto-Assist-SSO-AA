@@ -41,7 +41,6 @@
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }
-
         .nav-links a:hover {
             background-color: #f0f0f0;
         }
@@ -97,7 +96,6 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
             z-index: -1;
         }
 
@@ -164,9 +162,9 @@
 <body>
     <header>
         <nav class="nav-links">
-            <div class="btn-menu" onclick="toggleDropdown()"><span>&#9776;</span></div> <!-- Hamburger Menu Icon -->
             <a href="login.php" class="btn-login">Login</a>
         </nav>
+        <div class="btn-menu" onclick="toggleDropdown()"><span>&#9776;</span></div> <!-- Hamburger Menu Icon -->
         <div class="dropdown" id="dropdownMenu">
             <a href="profile.php">Profile</a>
             <a href="settings.php">Settings</a>
