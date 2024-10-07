@@ -6,128 +6,127 @@
     <title>SSO-Assist</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
+       /* Global Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+}
 
-        header {
-            background-color: white;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+/* Header Styles */
+header {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
-        .nav-links {
-            display: flex;
-            align-items: center;
-        }
+/* Navigation Links */
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    margin: 0 15px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
 
-        .nav-links a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-            padding: 5px 10px;
-            transition: background-color 0.3s;
-            border-radius: 5px;
-        }
+.nav-links a:hover {
+    background-color: #f0f0f0;
+}
 
-        .nav-links a:hover {
-            background-color: #f0f0f0;
-        }
+/* Button Styles */
+.btn-login {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
 
-        .nav-links .btn-login {
-            background-color: #4CAF50;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 5px;
-        }
+.btn-login:hover {
+    background-color: #45a049;
+}
 
-        .nav-links .btn-login:hover {
-            background-color: #45a049;
-        }
+.btn-menu {
+    font-size: 24px;
+    cursor: pointer;
+}
 
-        .nav-links .btn-menu {
-            font-size: 24px;
-            cursor: pointer;
-        }
+/* Hero Section */
+.hero {
+    height: 90vh;
+    background: url('hero-bg.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
 
-        .hero {
-            height: 80vh;
-            background-color: #f9f9f9;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+.hero:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
 
-        .hero-content {
-            max-width: 500px;
-        }
+.hero-content {
+    text-align: center;
+    color: white;
+}
 
-        .hero-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #333;
-        }
+.hero-content h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
 
-        .hero-content .btn {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: background-color 0.3s;
-        }
+.hero-content .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
 
-        .hero-content .btn:hover {
-            background-color: #45a049;
-        }
+.hero-content .btn:hover {
+    background-color: #45a049;
+}
 
-        /* Mobile responsiveness */
-        @media screen and (max-width: 768px) {
-            header {
-                flex-direction: column;
-                text-align: left;
-            }
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+    }
+    
+    .nav-links a {
+        margin: 10px 0;
+    }
 
-            .nav-links {
-                margin-top: 10px;
-                flex-direction: column;
-            }
+    .hero-content h2 {
+        font-size: 2.5em;
+    }
 
-            .nav-links a {
-                margin-bottom: 10px;
-            }
+    .hero-content .btn {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}
 
-            .hero {
-                height: 60vh;
-            }
-
-            .hero-content h2 {
-                font-size: 2rem;
-            }
-
-            .hero-content .btn {
-                padding: 8px 15px;
-                font-size: 0.9rem;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .hero-content h2 {
-                font-size: 1.5rem;
-            }
-
-            .hero-content .btn {
-                padding: 7px 12px;
-                font-size: 0.9rem;
-            }
-        }
     </style>
 </head>
 <body>
