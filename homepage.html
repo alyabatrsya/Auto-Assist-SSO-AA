@@ -101,7 +101,7 @@
 
         .hero-content {
             text-align: center;
-            color: white;
+            color: black;
         }
 
         .hero-content h2 {
@@ -116,7 +116,6 @@
             color: white;
             padding: 15px 30px;
             font-size: 1.2em;
-            text-transform: uppercase;
             border-radius: 5px;
             text-decoration: none;
             transition: background-color 0.3s ease;
@@ -128,11 +127,24 @@
 
         /* Media Queries for Responsive Design */
         @media (max-width: 768px) {
+            header {
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            }
+            
             .nav-links {
                 display: none; /* Hide links on mobile */
             }
 
             .btn-menu {
+                right: 15px;
                 display: block; /* Show hamburger icon on mobile */
             }
 
@@ -144,6 +156,7 @@
 
             .hero-content h2 {
                 font-size: 2em; /* Smaller heading on mobile */
+                color: black;
             }
 
             .hero-content .btn {
