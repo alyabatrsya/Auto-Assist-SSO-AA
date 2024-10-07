@@ -164,9 +164,9 @@
 <body>
     <header>
         <nav class="nav-links">
+            <div class="btn-menu" onclick="toggleDropdown()"><span>&#9776;</span></div> <!-- Hamburger Menu Icon -->
             <a href="login.php" class="btn-login">Login</a>
         </nav>
-        <div class="btn-menu" onclick="toggleDropdown()"><span>&#9776;</span></div> <!-- Hamburger Menu Icon -->
         <div class="dropdown" id="dropdownMenu">
             <a href="profile.php">Profile</a>
             <a href="settings.php">Settings</a>
@@ -183,7 +183,7 @@
 
     <script>
         // Function to toggle the dropdown menu
-        /*function toggleDropdown() {
+        function toggleDropdown() {
             const dropdownMenu = document.getElementById('dropdownMenu');
             dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
         }
