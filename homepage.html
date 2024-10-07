@@ -50,7 +50,8 @@
         .btn-menu {
             font-size: 24px;
             cursor: pointer;
-            display: none;/* Hide by default; will show in mobile */
+            display: none; /* Hide by default; will show in mobile */
+            padding: 10px; /* Added padding for better click area */
         }
 
         /* Dropdown Menu */
@@ -164,7 +165,7 @@
         <nav class="nav-links">
             <a href="login.php" class="btn-login">Login</a>
         </nav>
-        <div class="btn-menu"><a>&#9776;</a></div> <!-- Hamburger Menu Icon -->
+        <div class="btn-menu" onclick="toggleDropdown()"><a>&#9776;</a></div> <!-- Hamburger Menu Icon -->
         <div class="dropdown" id="dropdownMenu">
             <a href="profile.php">Profile</a>
             <a href="settings.php">Settings</a>
@@ -180,16 +181,16 @@
     </div>
 
     <script>
-        // JavaScript to toggle the dropdown menu
-        const btnMenu = document.querySelector('.btn-menu');
-        const dropdownMenu = document.getElementById('dropdownMenu');
-
-        btnMenu.addEventListener('click', function() {
+        // Function to toggle the dropdown menu
+        function toggleDropdown() {
+            const dropdownMenu = document.getElementById('dropdownMenu');
             dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-        });
+        }
 
         // Optional: Close the dropdown if the user clicks outside of it
         window.addEventListener('click', function(event) {
+            const btnMenu = document.querySelector('.btn-menu');
+            const dropdownMenu = document.getElementById('dropdownMenu');
             if (!btnMenu.contains(event.target) && !dropdownMenu.contains(event.target)) {
                 dropdownMenu.style.display = 'none';
             }
