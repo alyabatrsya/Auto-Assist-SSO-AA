@@ -6,127 +6,137 @@
     <title>SSO-Assist</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-       /* Global Styles */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-}
+        /* Global Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+        }
 
-/* Header Styles */
-header {
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-/* Navigation Links */
-.nav-links a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    margin: 0 15px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
+        /* Navigation Links */
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
 
-.nav-links a:hover {
-    background-color: #f0f0f0;
-}
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            margin: 0 15px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
 
-/* Button Styles */
-.btn-login {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-}
+        .nav-links a:hover {
+            background-color: #f0f0f0;
+        }
 
-.btn-login:hover {
-    background-color: #45a049;
-}
+        /* Hamburger Menu */
+        .btn-menu {
+            font-size: 24px;
+            cursor: pointer;
+            display: none; /* Hide by default; will show in mobile */
+        }
 
-.btn-menu {
-    font-size: 24px;
-    cursor: pointer;
-}
+        /* Dropdown Menu */
+        .dropdown {
+            display: none; /* Hidden by default */
+            position: absolute;
+            top: 60px; /* Adjust based on header height */
+            right: 30px; /* Aligns with the right edge */
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            z-index: 999;
+        }
 
-/* Hero Section */
-.hero {
-    height: 90vh;
-    background: url('hero-bg.jpg') no-repeat center center/cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-}
+        .dropdown a {
+            display: block;
+            padding: 10px 20px;
+            color: #333;
+            text-decoration: none;
+        }
 
-.hero:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: -1;
-}
+        .dropdown a:hover {
+            background-color: #f0f0f0;
+        }
 
-.hero-content {
-    text-align: center;
-    color: white;
-}
+        /* Hero Section */
+        .hero {
+            height: 90vh;
+            background: url('hero-bg.jpg') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
 
-.hero-content h2 {
-    font-size: 3em;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-}
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
 
-.hero-content .btn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 15px 30px;
-    font-size: 1.2em;
-    text-transform: uppercase;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
+        .hero-content {
+            text-align: center;
+            color: white;
+        }
 
-.hero-content .btn:hover {
-    background-color: #45a049;
-}
+        .hero-content h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
 
-/* Media Queries for Responsive Design */
-@media (max-width: 768px) {
-    .nav-links {
-        flex-direction: column;
-    }
-    
-    .nav-links a {
-        margin: 10px 0;
-    }
+        .hero-content .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
 
-    .hero-content h2 {
-        font-size: 2.5em;
-    }
+        .hero-content .btn:hover {
+            background-color: #45a049;
+        }
 
-    .hero-content .btn {
-        padding: 10px 20px;
-        font-size: 1em;
-    }
-}
-
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Hide links on mobile */
+            }
+            .btn-menu {
+                display: block; /* Show hamburger icon on mobile */
+            }
+            .dropdown {
+                right: 15px; /* Align with the right edge in mobile */
+            }
+        }
     </style>
 </head>
 <body>
@@ -136,6 +146,12 @@ header {
             <a href="register.php" class="button">Category</a>
             <a href="#" class="btn-menu"><span>&#9776;</span></a>
         </nav>
+        <div class="dropdown" id="dropdownMenu">
+            <a href="profile.php">Profile</a>
+            <a href="settings.php">Settings</a>
+            <a href="help.php">Help</a>
+            <a href="logout.php">Logout</a>
+        </div>
     </header>
     <div class="hero">
         <div class="hero-content">
@@ -143,5 +159,22 @@ header {
             <a href="home.php" class="btn">START</a>
         </div>
     </div>
+
+    <script>
+        // JavaScript to toggle the dropdown menu
+        const btnMenu = document.querySelector('.btn-menu');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        btnMenu.addEventListener('click', function() {
+            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Optional: Close the dropdown if the user clicks outside of it
+        window.addEventListener('click', function(event) {
+            if (!btnMenu.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                dropdownMenu.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
