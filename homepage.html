@@ -45,34 +45,40 @@
             background-color: #f0f0f0;
         }
 
-        /* Hamburger Menu */
+        /* Sidebar Styles */
+        .sidebar {
+            height: 100%;
+            width: 0; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #fff;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+            overflow-x: hidden;
+            z-index: 1000;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1.2em;
+            color: #333;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Button to open sidebar */
         .btn-menu {
             font-size: 24px;
             cursor: pointer;
+            padding: 10px;
             color: black;
-        }
-
-        /* Dropdown Menu */
-        .dropdown {
-            display: none; /* Hidden by default */
-            position: absolute;
-            top: 60px; /* Adjust based on header height */
-            right: 30px; /* Align with the right edge */
-            background-color: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            z-index: 999;
-        }
-
-        .dropdown a {
-            display: block;
-            padding: 10px 20px;
-            color: #333;
-            text-decoration: none;
-        }
-
-        .dropdown a:hover {
-            background-color: #f0f0f0;
         }
 
         /* Hero Section */
@@ -125,33 +131,6 @@
 
         /* Media Queries for Responsive Design */
         @media (max-width: 768px) {
-            header {
-            background-color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 30px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            }
-            
-            .nav-links {
-                display: none; /* Hide links on mobile */
-            }
-
-            .btn-menu {
-                right: 15px;
-                display: block; /* Show hamburger icon on mobile */
-            }
-
-            .dropdown {
-                right: 15px; /* Align with the right edge in mobile */
-                top: 60px; /* Position below the header */
-                width: 200px; /* Optional: set a width for dropdown */
-            }
-
             .hero-content h2 {
                 font-size: 2em; /* Smaller heading on mobile */
                 color: black;
@@ -172,17 +151,21 @@
 </head>
 <body>
     <header>
+        <span class="btn-menu" onclick="openSidebar()">&#9776; Menu</span> <!-- Sidebar Menu Icon -->
         <nav class="nav-links">
             <a href="login.php" class="btn-login">Login</a>
         </nav>
-        <div class="btn-menu" onclick="toggleDropdown()"><span>&#9776;</span></div> <!-- Hamburger Menu Icon -->
-        <div class="dropdown" id="dropdownMenu">
-            <a href="profile.php">Profile</a>
-            <a href="settings.php">Settings</a>
-            <a href="help.php">Help</a>
-            <a href="logout.php">Logout</a>
-        </div>
     </header>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" style="font-size: 24px; padding: 20px;" onclick="closeSidebar()">&#10005;</a> <!-- Close Button -->
+        <a href="profile.php">Profile</a>
+        <a href="settings.php">Settings</a>
+        <a href="help.php">Help</a>
+        <a href="logout.php">Logout</a>
+    </div>
+
     <div class="hero">
         <div class="hero-content">
             <h2>WELCOME</h2>
@@ -191,18 +174,22 @@
     </div>
 
     <script>
-        // Function to toggle the dropdown menu
-        function toggleDropdown() {
-            const dropdownMenu = document.getElementById('dropdownMenu');
-            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        // Function to open the sidebar
+        function openSidebar() {
+            document.getElementById('sidebar').style.width = '250px'; // Set the width of the sidebar
         }
 
-        // Optional: Close the dropdown if the user clicks outside of it
+        // Function to close the sidebar
+        function closeSidebar() {
+            document.getElementById('sidebar').style.width = '0'; // Hide the sidebar
+        }
+
+        // Optional: Close the sidebar if the user clicks outside of it
         window.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
             const btnMenu = document.querySelector('.btn-menu');
-            const dropdownMenu = document.getElementById('dropdownMenu');
-            if (!btnMenu.contains(event.target) && !dropdownMenu.contains(event.target)) {
-                dropdownMenu.style.display = 'none';
+            if (!sidebar.contains(event.target) && !btnMenu.contains(event.target)) {
+                closeSidebar();
             }
         });
     </script>
