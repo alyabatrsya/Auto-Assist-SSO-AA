@@ -199,21 +199,33 @@
 
     <!-- Sidebar -->
     <div id="sidebar" class="sidebar">
-    <a href="javascript:void(0)" style="font-size: 24px; padding: 20px;" onclick="closeSidebar()">&#10005;</a> <!-- Close Button -->
+    <a href="javascript:void(0)" style="font-size: 24px; padding: 20px;" onclick="closeSidebar()">&#10005;</a>
 
     <!-- Collapsible Section for Klang -->
     <div class="collapsible">
         <a href="javascript:void(0)" class="main-item" onclick="toggleSubMenu('klang-submenu')">Klang &#9660;</a>
         <div id="klang-submenu" class="submenu" style="display: none;">
-            <a href="https://www.google.com/maps?q=Bukit+Raja" target="_blank">Bukit Raja</a>
-            <a href="https://www.google.com/maps?q=Meru" target="_blank">Meru</a>
+            <a href="javascript:void(0)" onclick="openPopup('Bukit Raja', '3.0843', '101.4826')">Bukit Raja</a>
+            <a href="javascript:void(0)" onclick="openPopup('Meru', '3.1176', '101.4221')">Meru</a>
         </div>
     </div>
 
-    <!-- Other Locations -->
-    <a href="https://www.google.com/maps?q=Petaling+Jaya" target="_blank">Petaling Jaya</a>
-    <a href="https://www.google.com/maps?q=Kuala+Lumpur" target="_blank">Kuala Lumpur</a>
+    <!-- Other locations -->
+    <a href="javascript:void(0)" onclick="openPopup('Petaling Jaya', '3.1073', '101.6067')">Petaling Jaya</a>
+    <a href="javascript:void(0)" onclick="openPopup('Kuala Lumpur', '3.1390', '101.6869')">Kuala Lumpur</a>
+</div>
+
+<!-- Popup Modal -->
+<div id="popup" class="popup" style="display: none;">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <h2>Navigate to <span id="place-name"></span></h2>
+        <p>Choose your navigation app:</p>
+        <a href="#" target="_blank" id="google-maps-link">Google Maps</a>
+        <a href="#" target="_blank" id="waze-link">Waze</a>
+        <a href="#" target="_blank" id="apple-maps-link">Apple Maps</a>
     </div>
+</div>
 
 
     <!-- Hero Section -->
@@ -225,6 +237,7 @@
     </div>
 
     <script>
+        
          // Function to toggle visibility of submenus
         function toggleSubMenu(id) {
             var submenu = document.getElementById(id);
@@ -252,7 +265,31 @@
             const btnMenu = document.querySelector('.btn-menu');
             if (!sidebar.contains(event.target) && !btnMenu.contains(event.target)) {
                 closeSidebar();
-            }
+        }
+        // Function to open the popup with options for navigation apps
+    function openPopup(place, lat, lon) {
+        // Show the popup
+        document.getElementById('popup').style.display = 'block';
+
+        // Set place name in the popup
+        document.getElementById('place-name').innerText = place;
+
+        // Update the links for each app with the correct coordinates
+        document.getElementById('google-maps-link').href = `https://www.google.com/maps?q=${lat},${lon}`;
+        document.getElementById('waze-link').href = `https://waze.com/ul?ll=${lat},${lon}&navigate=yes`;
+        document.getElementById('apple-maps-link').href = `https://maps.apple.com/?q=${lat},${lon}`;
+    }
+
+    // Function to close the popup
+    function closePopup() {
+        document.getElementById('popup').style.display = 'none';
+    }
+
+    // Function to toggle submenu
+    function toggleSubMenu(id) {
+        var submenu = document.getElementById(id);
+        submenu.style.display = submenu.style.display === 'none' ? 'block' : 'none';
+    }
         });
     </script>
 </body>
