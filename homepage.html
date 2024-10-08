@@ -171,6 +171,25 @@ include "sideS.php";
             <a href="home.php" class="btn">START</a>
         </div>
     </div>
+<script>
+        // Function to open the sidebar
+        function openSidebar() {
+            document.getElementById('sidebar').style.width = '250px'; // Open sidebar
+        }
 
+        // Function to close the sidebar
+        function closeSidebar() {
+            document.getElementById('sidebar').style.width = '0'; // Close sidebar
+        }
+
+        // Close sidebar if clicked outside
+        window.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const btnMenu = document.querySelector('.btn-menu');
+            if (!sidebar.contains(event.target) && !btnMenu.contains(event.target)) {
+                closeSidebar();
+            }
+        });
+    </script>
 </body>
 </html>
