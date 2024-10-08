@@ -31,6 +31,10 @@
             display: flex;
             align-items: right;
         }
+        
+        .nav-links: hover{
+            background-color: white;
+        }
 
         .nav-links a {
             text-decoration: none;
@@ -38,11 +42,12 @@
             font-weight: bold;
             margin: 0 15px;
             padding: 10px 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+         
+            
         }
         .nav-links a:hover {
-            background-color: #f0f0f0;
+            background-color: #fff;
+            color: orange;
         }
 
         /* Sidebar Styles */
@@ -160,15 +165,6 @@ include "sideS.php";
         </nav>
     </header>
 
-    <!-- Sidebar -->
-    <div id="sidebar" class="sidebar">
-        <a href="javascript:void(0)" style="font-size: 24px; padding: 20px;" onclick="closeSidebar()">&#10005;</a> <!-- Close Button -->
-        <a href="profile.php">Profile</a>
-        <a href="settings.php">Settings</a>
-        <a href="help.php">Help</a>
-        <a href="logout.php">Logout</a>
-    </div>
-
     <div class="hero">
         <div class="hero-content">
             <h2>WELCOME</h2>
@@ -176,25 +172,5 @@ include "sideS.php";
         </div>
     </div>
 
-    <script>
-        // Function to open the sidebar
-        function openSidebar() {
-            document.getElementById('sidebar').style.width = '250px'; // Set the width of the sidebar
-        }
-
-        // Function to close the sidebar
-        function closeSidebar() {
-            document.getElementById('sidebar').style.width = '0'; // Hide the sidebar
-        }
-
-        // Optional: Close the sidebar if the user clicks outside of it
-        window.addEventListener('click', function(event) {
-            const sidebar = document.getElementById('sidebar');
-            const btnMenu = document.querySelector('.btn-menu');
-            if (!sidebar.contains(event.target) && !btnMenu.contains(event.target)) {
-                closeSidebar();
-            }
-        });
-    </script>
 </body>
 </html>
