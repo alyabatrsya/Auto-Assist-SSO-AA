@@ -102,49 +102,55 @@
                 font-size: 1.5em;
             }
         }
-        /* Sidebar Styles */
-        .sidebar {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: #111;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-            /* Ensure it's above the header */
-        }
+       /* Sidebar Styles */
+            .sidebar {
+                height: 100%;
+                width: 0;
+                position: fixed;
+                top: 0;
+                left: 0;
+                background-color: #111;
+                overflow-x: hidden;
+                transition: 0.5s;
+                padding-top: 60px;
+                z-index: 2000; /* Increased z-index to be above other content */
+            }
+            
+            .sidebar a {
+                padding: 10px 20px;
+                text-decoration: none;
+                font-size: 1.2em;
+                color: #818181;
+                display: block;
+                transition: 0.3s;
+            }
+            
+            .sidebar a:hover {
+                color: orange;
+                background-color: black;
+            }
+            
+            /* Prevent body scroll when sidebar is open */
+            body.noscroll {
+                overflow: hidden;
+            }
+            
+            /* Button to open sidebar */
+            .btn-menu {
+                font-size: 24px;
+                cursor: pointer;
+                color: black;
+                background-color: transparent;
+                border: none;
+                padding: 10px;
+            }
+            
+            .btn-menu:hover {
+                background-color: white;
+                color: orange;
+                border-radius: 5px;
+            }
 
-        .sidebar a {
-            padding: 10px 20px;
-            text-decoration: none;
-            font-size: 1.2em;
-            color: #818181;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .sidebar a:hover {
-            color: orange;
-            background-color: black;
-        }
-
-        /* Button to open sidebar */
-        .btn-menu {
-            font-size: 24px;
-            cursor: pointer;
-            color: black;
-            background-color: transparent;
-            border: none;
-            padding: 10px;
-        }
-
-        .btn-menu:hover {
-            background-color: white;
-            color: orange;
-            border-radius: 5px;
-        }
     </style>
 </head>
 
@@ -178,13 +184,15 @@
         // Function to open the sidebar
         function openSidebar() {
             document.getElementById('sidebar').style.width = '250px'; // Open sidebar
+            document.body.classList.add('noscroll'); // Disable body scrolling
         }
-
+        
         // Function to close the sidebar
         function closeSidebar() {
             document.getElementById('sidebar').style.width = '0'; // Close sidebar
+            document.body.classList.remove('noscroll'); // Enable body scrolling
         }
-
+        
         // Close sidebar if clicked outside
         window.addEventListener('click', function(event) {
             const sidebar = document.getElementById('sidebar');
