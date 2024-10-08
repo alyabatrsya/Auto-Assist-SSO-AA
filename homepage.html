@@ -150,6 +150,40 @@
                 color: orange;
                 border-radius: 5px;
             }
+            /* Style for the main item in the sidebar */
+            .main-item {
+                font-size: 1.2em;
+                padding: 10px 20px;
+                display: block;
+                text-decoration: none;
+                color: #333;
+                cursor: pointer;
+            }
+        
+            /* Submenu style */
+            .submenu {
+                padding-left: 20px;
+                margin-left: 10px;
+            }
+        
+            .submenu a {
+                padding: 5px 0;
+                font-size: 1em;
+                color: #666;
+                text-decoration: none;
+                display: block;
+            }
+        
+            .submenu a:hover {
+                background-color: orange;
+                color: #fff;
+            }
+        
+            /* Optional: Add some hover effect for the main item */
+            .main-item:hover {
+                background-color: orange;
+                color: #fff;
+            }
 
     </style>
 </head>
@@ -167,16 +201,19 @@
     <div id="sidebar" class="sidebar">
     <a href="javascript:void(0)" style="font-size: 24px; padding: 20px;" onclick="closeSidebar()">&#10005;</a> <!-- Close Button -->
 
-    <!-- Place Links -->
-    <a href="https://www.google.com/maps?q=Klang" target="_blank">Klang (Google Maps)</a>
-    <a href="geo:3.0436,101.4495" target="_blank">Klang (Open in Navigation App)</a>
+    <!-- Collapsible Section for Klang -->
+    <div class="collapsible">
+        <a href="javascript:void(0)" class="main-item" onclick="toggleSubMenu('klang-submenu')">Klang &#9660;</a>
+        <div id="klang-submenu" class="submenu" style="display: none;">
+            <a href="https://www.google.com/maps?q=Bukit+Raja" target="_blank">Bukit Raja</a>
+            <a href="https://www.google.com/maps?q=Meru" target="_blank">Meru</a>
+        </div>
+    </div>
 
-    <!-- Add more places -->
-    <a href="https://www.google.com/maps?q=Petaling+Jaya" target="_blank">Petaling Jaya (Google Maps)</a>
-    <a href="geo:3.1045,101.6400" target="_blank">Petaling Jaya (Open in Navigation App)</a>
-
-    <!-- You can keep adding more locations similarly -->
-</div>
+    <!-- Other Locations -->
+    <a href="https://www.google.com/maps?q=Petaling+Jaya" target="_blank">Petaling Jaya</a>
+    <a href="https://www.google.com/maps?q=Kuala+Lumpur" target="_blank">Kuala Lumpur</a>
+    </div>
 
 
     <!-- Hero Section -->
@@ -188,6 +225,15 @@
     </div>
 
     <script>
+         // Function to toggle visibility of submenus
+        function toggleSubMenu(id) {
+            var submenu = document.getElementById(id);
+            if (submenu.style.display === "none") {
+                submenu.style.display = "block";
+            } else {
+                submenu.style.display = "none";
+            }
+        }
         // Function to open the sidebar
         function openSidebar() {
             document.getElementById('sidebar').style.width = '250px'; // Open sidebar
