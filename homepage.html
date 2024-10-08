@@ -42,9 +42,8 @@
             font-weight: bold;
             margin: 0 15px;
             padding: 10px 20px;
-         
-            
         }
+
         .nav-links a:hover {
             background-color: #fff;
             color: orange;
@@ -53,15 +52,13 @@
         /* Sidebar Styles */
         .sidebar {
             height: 100%;
-            width: 0; /* Hidden by default */
+            width: 0;
             position: fixed;
             top: 0;
             left: 0;
-            background-color: #fff;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            transition: 0.3s;
+            background-color: #111;
             overflow-x: hidden;
-            z-index: 1000;
+            transition: 0.5s;
             padding-top: 60px;
         }
 
@@ -69,43 +66,40 @@
             padding: 10px 20px;
             text-decoration: none;
             font-size: 1.2em;
-            color: #333;
+            color: #818181;
             display: block;
-            transition: background-color 0.3s ease;
+            transition: 0.3s;
         }
 
         .sidebar a:hover {
-            background-color: orange;
+            color: orange;
+            background-color: black;
         }
 
         /* Button to open sidebar */
         .btn-menu {
             font-size: 24px;
             cursor: pointer;
-            padding: 10px;
             color: black;
+            background-color: transparent;
+            border: none;
+            padding: 10px;
+        }
+        
+        .btn-menu:hover {
+            background-color: #f4f4f9;
+            border-radius: 5px;
         }
 
         /* Hero Section */
         .hero {
-            min-height: 90vh; /* Use min-height for flexibility */
+            min-height: 90vh;
             background: url('hero-bg.jpg') no-repeat center center/cover;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
             z-index: 1;
-            padding: 20px; /* Added padding for mobile */
-        }
-
-        .hero:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
         }
 
         .hero-content {
@@ -134,43 +128,53 @@
             background-color: #45a049;
         }
 
-        /* Media Queries for Responsive Design */
+        /* Media Queries */
         @media (max-width: 768px) {
             .hero-content h2 {
-                font-size: 2em; /* Smaller heading on mobile */
-                color: black;
+                font-size: 2em;
             }
 
             .hero-content .btn {
-                padding: 10px 20px; /* Smaller button on mobile */
-                font-size: 1em; /* Adjust button size */
+                padding: 10px 20px;
+                font-size: 1em;
             }
         }
 
         @media (max-width: 480px) {
             .hero-content h2 {
-                font-size: 1.5em; /* Further decrease heading size */
+                font-size: 1.5em;
             }
         }
     </style>
 </head>
 
 <body>
+    <!-- Header -->
     <header>
-        <iframe src="sideS.php"></iframe>
-        <span class="btn-menu" onclick="openSidebar()">&#9776;</span> <!-- Sidebar Menu Icon -->
+        <button class="btn-menu" onclick="openSidebar()">&#9776;</button>
         <nav class="nav-links">
             <a href="login.php" class="btn-login">Login</a>
         </nav>
     </header>
 
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" style="font-size: 24px; padding: 20px;" onclick="closeSidebar()">&#10005;</a> <!-- Close Button -->
+        <a href="profile.php">Profile</a>
+        <a href="settings.php">Settings</a>
+        <a href="help.php">Help</a>
+        <a href="logout.php">Logout</a>
+    </div>
+
+    <!-- Hero Section -->
     <div class="hero">
         <div class="hero-content">
             <h2>WELCOME</h2>
             <a href="home.php" class="btn">START</a>
         </div>
     </div>
-<script>
+
+    <script>
         // Function to open the sidebar
         function openSidebar() {
             document.getElementById('sidebar').style.width = '250px'; // Open sidebar
