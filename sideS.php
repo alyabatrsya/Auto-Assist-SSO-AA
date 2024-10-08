@@ -26,6 +26,8 @@
 
         .nav-links {
             display: flex;
+            margin-bottom: auto;
+            padding-top: 5px;
         }
 
         .nav-links a {
@@ -39,7 +41,7 @@
         }
 
         .nav-links a:hover {
-            background-color: #f0f0f0;
+            background-color: #f4f4f9;
         }
 
         /* Sidebar Styles */
@@ -65,7 +67,8 @@
         }
 
         .sidebar a:hover {
-            color: #f1f1f1;
+            color: orange;
+            background-color: black;
         }
 
         /* Button to open sidebar */
@@ -76,6 +79,11 @@
             background-color: transparent;
             border: none;
             padding: 10px;
+        }
+        
+        .btn-menu:hover {
+            background-color: #f4f4f9;
+            border-radius: 5px;
         }
 
         /* Hero Section */
@@ -145,10 +153,9 @@
     <!-- Sidebar -->
     <div id="sidebar" class="sidebar">
         <a href="javascript:void(0)" style="font-size: 24px; padding: 20px;" onclick="closeSidebar()">&#10005;</a> <!-- Close Button -->
-        <a href="add_newbooking(new).php">Booking</a>
-        <a href="search_cust.php">Customer</a>
-        <a href="cancel_list.php">Canceled Booking</a>
-        <a href="menu_staff.php">Home</a>
+        <a href="profile.php">Profile</a>
+        <a href="settings.php">Settings</a>
+        <a href="help.php">Help</a>
         <a href="logout.php">Logout</a>
     </div>
 
