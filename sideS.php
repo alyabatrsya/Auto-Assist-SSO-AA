@@ -1,124 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sidebar Navigation</title>
-<style>
-    .sidebar {
-        height: 100%;
-        width: 0;
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        background-color: #111;
-        overflow-x: hidden;
-        transition: 0.5s;
-        padding-top: 60px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSO-Assist Sidebar</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+        }
 
-    .sidebar a {
-        padding: 10px 15px;
-        text-decoration: none;
-        font-size: 18px;
-        color: #818181;
-        display: block;
-        transition: 0.3s;
-    }
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-    .sidebar a:hover {
-        color: #f1f1f1;
-    }
+        .nav-links {
+            display: flex;
+        }
 
-    .openbtn {
-        font-size: 25px;
-        cursor: pointer;
-        background-color: transparent;
-        color: white;
-        padding: 10px 15px;
-        border: none;
-        position: fixed;
-        top: 0px;
-        right:1298px;
-        z-index: 2;
-        transition: 0.3s;
-    }
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            margin: 0 15px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
 
-    .openbtn:hover {
-        background-color: transparent;
-    }
+        .nav-links a:hover {
+            background-color: #f0f0f0;
+        }
 
-    @media screen and (max-height: 450px) {
-        .sidebar { padding-top: 15px; }
-        .sidebar a { font-size: 18px; }
-    }
-</style>
+        /* Sidebar Styles */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1.2em;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            color: #f1f1f1;
+        }
+
+        /* Button to open sidebar */
+        .btn-menu {
+            font-size: 24px;
+            cursor: pointer;
+            color: black;
+            background-color: transparent;
+            border: none;
+            padding: 10px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            background: url('hero-bg.jpg') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: black;
+        }
+
+        .hero-content h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .hero-content .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero-content .btn:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h2 {
+                font-size: 2em;
+                color: black;
+            }
+
+            .hero-content .btn {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <button class="btn-menu" onclick="openSidebar()">&#9776;</button> <!-- Sidebar Menu Icon -->
+        <nav class="nav-links">
+            <a href="login.php" class="btn-login">Login</a>
+        </nav>
+    </header>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    var sidebar = document.createElement('div');
-    sidebar.id = 'mySidebar';
-    sidebar.className = 'sidebar';
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" style="font-size: 24px; padding: 20px;" onclick="closeSidebar()">&#10005;</a> <!-- Close Button -->
+        <a href="add_newbooking(new).php">Booking</a>
+        <a href="search_cust.php">Customer</a>
+        <a href="cancel_list.php">Canceled Booking</a>
+        <a href="menu_staff.php">Home</a>
+        <a href="logout.php">Logout</a>
+    </div>
 
-    var openButton = document.createElement('button');
-    openButton.className = 'openbtn';
-    openButton.innerHTML = '☰';
-    openButton.addEventListener('click', function() {
-        if (sidebar.style.width === '250px') {
-            closeNav();
-        } else {
-            openNav();
+    <div class="hero">
+        <div class="hero-content">
+            <h2>WELCOME</h2>
+            <a href="home.php" class="btn">START</a>
+        </div>
+    </div>
+
+    <script>
+        // Function to open the sidebar
+        function openSidebar() {
+            document.getElementById('sidebar').style.width = '250px'; // Open sidebar
         }
-    });
 
-    var backLink = document.createElement('a');
-    backLink.href = 'javascript:history.back()';
-    backLink.innerHTML = 'BACK';
+        // Function to close the sidebar
+        function closeSidebar() {
+            document.getElementById('sidebar').style.width = '0'; // Close sidebar
+        }
 
-    var bookingLink = document.createElement('a');
-    bookingLink.href = 'add_newbooking(new).php';
-    bookingLink.innerHTML = 'BOOKING';
-
-    var customerLink = document.createElement('a');
-    customerLink.href = 'search_cust.php';
-    customerLink.innerHTML = 'CUSTOMER';
-
-    var canceledBookingLink = document.createElement('a');
-    canceledBookingLink.href = 'cancel_list.php';
-    canceledBookingLink.innerHTML = 'CANCELED BOOKING';
-
-    var HomeLink = document.createElement('a');
-    HomeLink.href = 'menu_staff.php';
-    HomeLink.innerHTML = 'HOME';
-
-    var logoutLink = document.createElement('a');
-    logoutLink.href = 'logout.php'; // Link to the logout PHP script
-    logoutLink.innerHTML = 'LOGOUT';
-
-    sidebar.appendChild(backLink);
-    sidebar.appendChild(bookingLink);
-    sidebar.appendChild(customerLink);
-    sidebar.appendChild(canceledBookingLink);
-    sidebar.appendChild(HomeLink);
-    sidebar.appendChild(logoutLink);
-
-    document.body.appendChild(sidebar);
-    document.body.appendChild(openButton);
-
-    function openNav() {
-        document.getElementById("mySidebar").style.width = "250px";
-        openButton.innerHTML = '×';
-    }
-
-    function closeNav() {
-        document.getElementById("mySidebar").style.width = "0";
-        openButton.innerHTML = '☰';
-    }
-});
-</script>
-
+        // Close sidebar if clicked outside
+        window.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const btnMenu = document.querySelector('.btn-menu');
+            if (!sidebar.contains(event.target) && !btnMenu.contains(event.target)) {
+                closeSidebar();
+            }
+        });
+    </script>
 </body>
 </html>
