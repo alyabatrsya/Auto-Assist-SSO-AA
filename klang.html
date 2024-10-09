@@ -40,7 +40,7 @@
     </tr>
     <tr>
         <td>Central Park, NYC</td>
-        <td><button onclick="navigateToPlace(40.785091, -73.968285)">Navigate</button></td>
+        <td><button onclick="openPopup(nyc,40.785091, -73.968285)">Navigate</button></td>
     </tr>
     <tr>
         <td>Eiffel Tower, Paris</td>
@@ -62,6 +62,25 @@
         const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
         window.open(url, '_blank');
     }
+
+    // Function to open the popup with options for navigation apps
+        function openPopup(place, lat, lon) {
+            // Show the popup
+            document.getElementById('popup').style.display = 'flex';
+
+            // Set place name in the popup
+            document.getElementById('place-name').innerText = place;
+
+            // Update the links for each app with the correct coordinates
+            document.getElementById('google-maps-link').href = `https://www.google.com/maps?q=${lat},${lon}`;
+            document.getElementById('waze-link').href = `https://waze.com/ul?ll=${lat},${lon}&navigate=yes`;
+            document.getElementById('apple-maps-link').href = `https://maps.apple.com/?q=${lat},${lon}`;
+        }
+
+        // Function to close the popup
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
 </script>
 
 </body>
