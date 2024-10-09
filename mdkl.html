@@ -6,23 +6,40 @@
     <title>Places Navigation</title>
     <style>
         h2 {
-            position: center;
             text-align: center;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
+        /* Grid table styling */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* Default: 4 columns */
+            gap: 10px;
             margin: 20px 0;
+            padding: 0 20px;
         }
 
-        table, th, td {
-            border: 1px solid black;
+        /* Responsive layout adjustments */
+        @media (max-width: 900px) {
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr); /* 3 columns for medium screens */
+            }
         }
 
-        th, td {
-            padding: 15px;
-            text-align: center;
+        @media (max-width: 600px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+            }
+        }
+
+        @media (max-width: 400px) {
+            .grid-container {
+                grid-template-columns: 1fr; /* 1 column for very small screens */
+            }
+        }
+
+        .grid-item {
+            display: flex;
+            justify-content: center;
         }
 
         button {
@@ -85,33 +102,8 @@
             background-color: #45a049;
         }
 
-        /* Mobile View Styling */
+        /* Mobile View Popup Adjustments */
         @media only screen and (max-width: 600px) {
-            table, tr, td {
-                width: 100%;
-                display: block;
-                text-align: center;
-            }
-
-            tr{
-                width: 150px;
-            }
-
-            td {
-                margin-bottom: 10px;
-                border: none;
-            }
-
-            button {
-                width: 80%;
-                padding: 10px;
-                margin: 5px 0;
-            }
-
-            h2 {
-                font-size: 18px;
-            }
-
             .popup-content {
                 width: 95%;
                 max-width: none;
@@ -120,8 +112,7 @@
             .close {
                 top: 10px;
                 right: 15px;
-                font-size: 35px;
-                color: white;
+                font-size: 25px;
             }
         }
     </style>
@@ -130,26 +121,20 @@
 
 <h2>Majlis Daerah Kuala Langat (MDKL)</h2>
 
-<table>
-    <tr>
-        <td><button onclick="openPopup('Tanjung Sepat, Banting', 2.65928055555556, 101.565702777778)">C1</button></td>
-        <td><button onclick="openPopup('Jalan Morib', 2.75038055555556, 101.443166666667)">C2</button></td>
-        <td><button onclick="openPopup('Hospital Banting', 2.80418333333333, 101.492594444444)">C3</button></td>
-        <td><button onclick="openPopup('Jalan Sultan Abdul Rahmat', 2.81194722222222, 101.497308333333)">C4</button></td>
-    </tr>
-    <tr>
-        <td><button onclick="openPopup('Jalan Beringin and Jalan Beringin 3 Junction', 2.81439722222222, 101.503427777778)">C5</button></td>
-        <td><button onclick="openPopup('Tanjung Sepat, Banting', 2.65928055555556, 101.565702777778)">C6</button></td>
-        <td><button onclick="openPopup('Jalan Morib', 2.75038055555556, 101.443166666667)">C7</button></td>
-        <td><button onclick="openPopup('Hospital Banting', 2.80418333333333, 101.492594444444)">C8</button></td>
-    </tr>
-    <tr>
-        <td><button onclick="openPopup('Jalan Beringin and Jalan Beringin 3 Junction', 2.81439722222222, 101.503427777778)">C9</button></td>
-        <td><button onclick="openPopup('Tanjung Sepat, Banting', 2.65928055555556, 101.565702777778)">C10</button></td>
-        <td><button onclick="openPopup('Jalan Beringin and Jalan Beringin 3 Junction', 2.81439722222222, 101.503427777778)">IPDKL-CC</button></td>
-        <td><button onclick="openPopup('Tanjung Sepat, Banting', 2.65928055555556, 101.565702777778)">MPKL-CC</button></td>
-    </tr>
-</table>
+<div class="grid-container">
+    <div class="grid-item"><button onclick="openPopup('Tanjung Sepat, Banting', 2.65928055555556, 101.565702777778)">C1</button></div>
+    <div class="grid-item"><button onclick="openPopup('Jalan Morib', 2.75038055555556, 101.443166666667)">C2</button></div>
+    <div class="grid-item"><button onclick="openPopup('Hospital Banting', 2.80418333333333, 101.492594444444)">C3</button></div>
+    <div class="grid-item"><button onclick="openPopup('Jalan Sultan Abdul Rahmat', 2.81194722222222, 101.497308333333)">C4</button></div>
+    <div class="grid-item"><button onclick="openPopup('Jalan Beringin and Jalan Beringin 3 Junction', 2.81439722222222, 101.503427777778)">C5</button></div>
+    <div class="grid-item"><button onclick="openPopup('Tanjung Sepat, Banting', 2.65928055555556, 101.565702777778)">C6</button></div>
+    <div class="grid-item"><button onclick="openPopup('Jalan Morib', 2.75038055555556, 101.443166666667)">C7</button></div>
+    <div class="grid-item"><button onclick="openPopup('Hospital Banting', 2.80418333333333, 101.492594444444)">C8</button></div>
+    <div class="grid-item"><button onclick="openPopup('Jalan Beringin and Jalan Beringin 3 Junction', 2.81439722222222, 101.503427777778)">C9</button></div>
+    <div class="grid-item"><button onclick="openPopup('Tanjung Sepat, Banting', 2.65928055555556, 101.565702777778)">C10</button></div>
+    <div class="grid-item"><button onclick="openPopup('Jalan Beringin and Jalan Beringin 3 Junction', 2.81439722222222, 101.503427777778)">IPDKL-CC</button></div>
+    <div class="grid-item"><button onclick="openPopup('Tanjung Sepat, Banting', 2.65928055555556, 101.565702777778)">MPKL-CC</button></div>
+</div>
 
 <!-- Popup Modal -->
 <div id="popup" class="popup">
