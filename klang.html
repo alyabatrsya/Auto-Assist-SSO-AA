@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Places Navigation</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 15px;
+            text-align: center;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Places Navigation</h2>
+
+<table>
+    <tr>
+        <th>Place</th>
+        <th>Action</th>
+    </tr>
+    <tr>
+        <td>Central Park, NYC</td>
+        <td><button onclick="navigateToPlace(40.785091, -73.968285)">Navigate</button></td>
+    </tr>
+    <tr>
+        <td>Eiffel Tower, Paris</td>
+        <td><button onclick="navigateToPlace(48.8584, 2.2945)">Navigate</button></td>
+    </tr>
+    <tr>
+        <td>Tokyo Tower, Japan</td>
+        <td><button onclick="navigateToPlace(35.6586, 139.7454)">Navigate</button></td>
+    </tr>
+    <tr>
+        <td>Colosseum, Rome</td>
+        <td><button onclick="navigateToPlace(41.8902, 12.4922)">Navigate</button></td>
+    </tr>
+</table>
+
+<script>
+    function navigateToPlace(lat, lng) {
+        // Open Google Maps with navigation to the specified latitude and longitude
+        const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+        window.open(url, '_blank');
+    }
+</script>
+
+</body>
+</html>
